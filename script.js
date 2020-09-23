@@ -13,8 +13,17 @@ function generatePassword() {
   var passwordLength = prompt(
     "How many characters would you like your password to contain?"
   );
-  var d = parseInt(passwordLength);
 
+  passwordLength = parseInt(passwordLength);
+
+  if(!passwordLength){
+    alert("Please enter a valid number.")
+    return "";
+  }
+  else if(passwordLength < 4){
+    alert("Password must be at least 4 characters.")
+    return "";
+  }
   //Confirm and get requirements for generated password
   var specialCharacters = confirm("Click ok to include special characters.");
   var numeric = confirm("Click ok to include numeric characters.");
@@ -41,7 +50,7 @@ function generatePassword() {
 
   //Add special symbols to characters to include in generated password
   if (specialCharacters) {
-    characters += " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+    characters += "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   }
 
   for(var i = 0; i < passwordLength; i++){
